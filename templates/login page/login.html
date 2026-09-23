@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | BookVerse Library</title>
+
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="./login.css">
+
+</head>
+
+
+<body>
+
+
+    <main class="login-page">
+
+
+        <!-- Theme Image -->
+
+        <div class="auth-background">
+
+
+            <!-- Navigation -->
+
+            <div class="auth-menu">
+
+                <button
+                    type="button"
+                    onclick="toggleMenu()"
+                    class="menu-button"
+                >
+                    ⋮
+                </button>
+
+
+                <div
+                    id="menuBox"
+                    class="menu-box"
+                >
+
+                    <a href="/index.html">
+                        Home
+                    </a>
+
+                    <a href="../register page/register.html">
+                        Register
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Login Form -->
+
+            <div class="auth-form">
+
+                <p class="small-title">
+                    WELCOME BACK
+                </p>
+
+
+                <h1>
+                    Enter the Library
+                </h1>
+
+
+                <p class="login-text">
+                    Sign in to continue your reading journey.
+                </p>
+
+
+                <form id="loginForm">
+
+
+                    <div class="input-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+                        LOGIN
+                    </button>
+
+
+                </form>
+
+
+                <div class="register-link">
+
+                    <p>
+                        New to our library?
+                    </p>
+
+                    <a href="../register page/register.html">
+                        Create an account to get started
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="./login.js"></script>
+
+</body>
+
+</html>

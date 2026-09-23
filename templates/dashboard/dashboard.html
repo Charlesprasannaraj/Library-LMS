@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!--   
+/* =========================================
+   Css Links
+========================================= */ -->
+  <link rel="stylesheet" href="./dashboard.css">
+  <link rel="stylesheet" href="./d_css/about.css">
+  <link rel="stylesheet" href="./d_css/book.css">
+  <link rel="stylesheet" href="./d_css/issueBook.css">
+  <link rel="stylesheet" href="./d_css/members.css">
+  <link rel="stylesheet" href="./d_css/report.css">
+  <link rel="stylesheet" href="./d_css/returnBook.css">
+  
+</head>
+
+<body id="dashboardPage">
+
+
+  <aside>
+    <div class="profile">
+      <h2>Library System</h2>
+
+      <div id="userMenuItem" style="padding-bottom: 10px; padding-top: 10px;">
+
+        <p><span class="material-symbols-outlined" style="color: #fff2d2;"> account_circle </span><span class="user"></span>
+          <a href="../login page/login.html" id="loginMenuLink" style="color: #fff2d2; text-decoration: none;">
+            Login </a>
+        </p>
+      </div>
+    </div>
+
+    <ul class="menu">
+      <li class="" data-page="dashboard.html" data-section="d-dashboard"><span class="material-symbols-outlined">
+          dashboard </span>Dashboard</li>
+      <li data-page="books.html" data-section="d-books"><span class="material-symbols-outlined"> library_books
+        </span>Book</li>
+      <li data-page="members.html" data-section="d-members" class="members"><span class="material-symbols-outlined">
+          groups </span>Members</li>
+      <li data-page="issuebook.html" data-section="d-issue-book"><span class="material-symbols-outlined"> book
+        </span>Issue Book</li>
+      <li data-page="returnbook.html" data-section="d-return-book"><span class="material-symbols-outlined"> replay
+        </span>Return Book</li>
+      <li data-page="reports.html" data-section="d-reports"><span class="material-symbols-outlined"> analytics
+        </span>Report</li>
+      <li data-page="about.html" data-section="d-about"><span class="material-symbols-outlined"> article_person
+        </span>About</li>
+      <li class="logout" id="logoutButton" onclick="logoutUser()"><span class="material-symbols-outlined">
+          power_settings_new </span>Logout</li>
+    </ul>
+  </aside>
+  <main>
+   
+    <div class="content-container">
+
+<!-- 
+        /* =========================================
+                        Dashboard
+        ========================================= */ -->
+
+       <section id="d-dashboard" >
+
+      <h1 style="text-align: center; color: aliceblue; font-size: 50px;">Dashboard</h1>
+      <div class="cards">
+        <div class="card card-1">
+          <div class="icon-box">
+            <span class="material-symbols-outlined"> auto_stories </span>
+          </div>
+          <div class="text-box">
+            <h2>Total Books</h2>
+            <h2>20</h2>
+          </div>
+        </div>
+        <div class="card card-2">
+          <div class="icon-box">
+            <span class="material-symbols-outlined"> auto_stories </span>
+          </div>
+          <div class="text-box">
+            <h2>Available Books</h2>
+            <h2>15</h2>
+          </div>
+        </div>
+        <div class="card card-3">
+          <div class="icon-box">
+            <span class="material-symbols-outlined"> auto_stories </span>
+          </div>
+          <div class="text-box">
+            <h2>Total Books</h2>
+            <h2>20</h2>
+          </div>
+        </div>
+        <div class="card card-4">
+          <div class="icon-box">
+            <span class="material-symbols-outlined"> auto_stories </span>
+          </div>
+          <div class="text-box">
+            <h2>Total Books</h2>
+            <h2>20</h2>
+          </div>
+        </div>
+      </div>
+      <!--Quick Action ToolBars-->
+      <div class="quick">
+        <div class="quick-text" style="margin: 10px 0px">
+          <span class="material-symbols-outlined"> bolt </span>
+          <h2 style="display: inline">Quick Actions</h2>
+        </div>
+        <div class="action-group">
+          <div class="action">Add Book</div>
+          <div class="action">Return Book</div>
+          <div class="action">Issue Book</div>
+          <div class="action">Retun Book</div>
+        </div>
+      </div>
+      <!--Recent Issue Container-->
+      <div class="recent-issues">
+        <div class="recent-issues-text">
+          <h1>Recent Issued Books</h1>
+
+        </div>
+        <div class="recent-issue-box">
+          <table>
+
+            <tr>
+              <th>Memeber Name</th>
+              <th>Book Title</th>
+              <th>Issue Date</th>
+              <th>Due Date</th>
+              <th>Status</th>
+
+            </tr>
+            <tr>
+              <td>Ananya Sharma</td>
+              <td>Clean Code</td>
+              <td>2026-09-03</td>
+              <td>2020-23-07</td>
+              <td>
+                <p id="status-text">Issued</p>
+              </td>
+            </tr>
+             <tr>
+              <td>Ananya Sharma</td>
+              <td>Clean Code</td>
+              <td>2026-09-03</td>
+              <td>2020-23-07</td>
+              <td>
+                <p id="status-text">Issued</p>
+              </td>
+            </tr>
+             <tr>
+              <td>Ananya Sharma</td>
+              <td>Clean Code</td>
+              <td>2026-09-03</td>
+              <td>2020-23-07</td>
+              <td>
+                <p id="status-text">Issued</p>
+              </td>
+            </tr>
+             <tr>
+              <td>Ananya Sharma</td>
+              <td>Clean Code</td>
+              <td>2026-09-03</td>
+              <td>2020-23-07</td>
+              <td>
+                <p id="status-text">Issued</p>
+              </td>
+            </tr>
+             <tr>
+              <td>Ananya Sharma</td>
+              <td>Clean Code</td>
+              <td>2026-09-03</td>
+              <td>2020-23-07</td>
+              <td>
+                <p id="status-text">Issued</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+    </section>
+    </div>
+<!-- 
+    /* =========================================
+                        Book
+        ========================================= */ -->
+
+    <section id="d-books">
+      <h1 style="text-align: center; color: aliceblue; font-size: 50px;">Book</h1>
+
+
+
+
+
+
+                                   <!-- small breeds sections - 1 -->
+
+                                
+
+    <div class="d-c " style="display: flex; flex-wrap:wrap; gap: 10px;">
+        <div class="card" style="width: 18rem;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbD5MZPkeN7kFRcpHwPeP6YGrQFFQwfifUIfutDQ9-fQ&s=10" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Pug</h5>
+    <p class="card-text">A Pug is a small, sturdy dog breed known for its wrinkled face, curled tail, and charming, affectionate personality.</p>
+
+    <select class="form-select form-select-sm" aria-label="Small select example">
+  <option selected>Gender</option>
+  <option value="1">Male</option>
+  <option value="2">Female</option>
+</select><br>
+
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+
+                                   <!-- small breeds sections - 2 -->
+
+                                
+
+ 
+<div class="card" style="width: 18rem;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ5ak0_hx-kBbQQJ2P62DA0A7DlQ-_sshw7XtDbj2gbg&s=10" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Pomeranian</h5>
+    <p class="card-text">A Pomeranian is a tiny, lively toy dog breed recognizable by its fluffy double coat, foxy face, and alert, upright ears.</p>
+
+    <select class="form-select form-select-sm" aria-label="Small select example">
+  <option selected>Gender</option>
+  <option value="1">Male</option>
+  <option value="2">Female</option>
+</select><br>
+
+    
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+
+                                   <!-- small breeds sections - 3 -->
+
+                                
+
+ 
+<div class="card" style="width: 18rem;">
+  <img src="https://media.istockphoto.com/id/537847270/photo/shih-tzus-playing.jpg?s=612x612&w=0&k=20&c=xCR56cG64w_Nv7OG5rf6Zp4SseNanyBSHENT5lmkKDE=" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Shih tzu</h5>
+    <p class="card-text">A Shih Tzu is a small, affectionate toy breed with ancient Tibetan roots that translates to "little lion dog".</p>
+
+    <select class="form-select form-select-sm" aria-label="Small select example">
+  <option selected>Gender</option>
+  <option value="1">Male</option>
+  <option value="2">Female</option>
+</select><br>
+
+    
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+
+                                   <!-- small breeds sections - 4 -->
+
+                                
+
+ 
+<div class="card" style="width: 18rem;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKpQiRE3jPrtxw87apI-3iWsmhzRJGHl_R9PblwDZ3sA&s=10" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Toy Poodle</h5>
+    <p class="card-text">A Toy Poodle is a small, highly intelligent dog breed famous for its dense, curly coat and elegant, athletic build.</p>
+
+    <select class="form-select form-select-sm" aria-label="Small select example">
+  <option selected>Gender</option>
+  <option value="1">Male</option>
+  <option value="2">Female</option>
+</select><br>
+
+    
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+
+                                   <!-- small breeds sections - 5 -->
+
+                                
+
+ 
+<div class="card" style="width: 18rem;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQODyDUnYzHTefKj6i7Pj0fZ2FcuM4WWXe6tRLIH7CUxQ&s=10" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">French Bulldog</h5>
+    <p class="card-text">A French Bulldog is a small, muscular companion breed instantly recognized by its large "bat ears" and short, wrinkled face.</p>
+
+    <select class="form-select form-select-sm" aria-label="Small select example">
+  <option selected>Gender</option>
+  <option value="1">Male</option>
+  <option value="2">Female</option>
+</select><br>
+
+    
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+<!-- 
+    /* =========================================
+                        Members
+        ========================================= */ -->
+
+    <section id="d-members">
+      <h1 style="text-align: center;">Members</h1>
+      <p>Total User</p>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+
+      </table>
+    </section>
+
+<!-- 
+    /* =========================================
+                        Isue Book
+        ========================================= */ -->
+
+    <section id="d-issue-book">
+      <h1 style="text-align: center;">Isue Book</h1>
+    </section>
+
+<!-- 
+    /* =========================================
+                        Return Book
+        ========================================= */ -->
+    <section id="d-return-book">
+      <h1 style="text-align: center;">Return Book</h1>
+    </section>
+<!-- 
+
+    /* =========================================
+                        Reports
+        ========================================= */ -->
+    <section id="d-reports">
+      <h1 style="text-align: center;">Reports</h1>
+    </section>
+
+<!-- 
+    /* =========================================
+                        About
+        ========================================= */ -->
+    <section id="d-about">
+      <h1 style="text-align: center;">About</h1>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="./dashboard.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+
+</html>
