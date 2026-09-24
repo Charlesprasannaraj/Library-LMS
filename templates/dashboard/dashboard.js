@@ -38,7 +38,7 @@ items.forEach((item) => {
 // ]
 
 function displayBooks() {
-  let books = JSON.parse(localStorage.getItem("books"));
+  let books = JSON.parse(localStorage.getItem("books")) || []
   let table = document.querySelector(".book-table table tbody");
   table.innerHTML = "";
   books.forEach((book) => {
