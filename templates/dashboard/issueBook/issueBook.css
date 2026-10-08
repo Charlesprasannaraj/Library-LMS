@@ -1,0 +1,49 @@
+.left-issue {
+    background: linear-gradient(
+        145deg,
+        rgb(126, 88, 105),
+        #361d2d
+    );
+    width: 50%;
+    border: 2px solid #c6a15a; 
+    border-radius: 8px;
+}
+#d-issue-book h1{
+    color: #e2c77e;
+    margin-bottom: 20px;
+}
+.input-group select,
+input {
+  width: 100%;
+  height: 45px;
+  border: none;
+  outline: none;
+  border: 2px solid rgb(232, 226, 226);
+  padding: 5px 10px;
+}
+.input-group label span {
+  color: rgb(241, 92, 42);
+}
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+.btn-group button {
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-weight: bold;
+  
+
+}
+.input-group input,select{
+  border-radius: 8px;
+  margin: 10px 0px;
+}
+.avail-list > li{
+  margin-top: 20px;
+
+}
