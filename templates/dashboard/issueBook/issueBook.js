@@ -1,4 +1,6 @@
+// Feature: Issue Book
 
+// Section: Member and Available Book Selectors
     // Declare the variable whatever we will use the document
     let memberSelect = document.getElementById('memberSelect')
     let bookSelect = document.getElementById('bookSelect')
@@ -10,15 +12,22 @@
 
     let users = JSON.parse(localStorage.getItem('libraryUser')) || [];
     let books = JSON.parse(localStorage.getItem('books')) || [];
-    users.forEach((user) => {
-      let element = document.createElement('option')
-      element.value = user.name
-      element.textContent = user.name;
-      memberSelect.appendChild(element)
-    })
+
+    function renderMembers() {
+      users = JSON.parse(localStorage.getItem('libraryUser')) || [];
+      memberSelect.replaceChildren(new Option('....Select Member....', ''));
+      users.forEach((user) => {
+        let element = document.createElement('option')
+        element.value = user.name
+        element.textContent = user.name;
+        memberSelect.appendChild(element)
+      })
+    }
 
     //Books Render
     function renderBook() {
+      books = JSON.parse(localStorage.getItem('books')) || [];
+      bookSelect.replaceChildren(new Option('Select Book...', ''));
       let filteredBooks = books.filter((book) => book.bookQuantity > 0)
       filteredBooks.forEach((book) => {
         let element = document.createElement('option')
@@ -27,9 +36,58 @@
         bookSelect.appendChild(element)
       })
     }
+    renderMembers();
     renderBook()
 
-    //Issue Date Validation
+    // Section: Live Issue Workflow Data
+    const issueAvailableCopies = document.getElementById('issueAvailableCopies');
+    const issueActiveCount = document.getElementById('issueActiveCount');
+    const latestDetails = document.getElementById('issueLatestDetails');
+    const latestEmpty = document.getElementById('issueLatestEmpty');
+
+    function readStoredList(key) {
+      try {
+        const stored = JSON.parse(localStorage.getItem(key) || '[]');
+        return Array.isArray(stored) ? stored : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function renderIssueActivity() {
+      if (!issueAvailableCopies || !issueActiveCount || !latestDetails || !latestEmpty) return;
+
+      const storedBooks = readStoredList('books');
+      const activeIssues = readStoredList('issuebooks');
+      const availableCopies = storedBooks.reduce((total, book) => total + (Number(book.bookQuantity) || 0), 0);
+
+      issueAvailableCopies.textContent = String(availableCopies);
+      issueActiveCount.textContent = String(activeIssues.length);
+
+      const latestIssue = activeIssues[activeIssues.length - 1];
+      latestDetails.hidden = !latestIssue;
+      latestEmpty.hidden = Boolean(latestIssue);
+      if (!latestIssue) return;
+
+      document.getElementById('issueLatestBook').textContent = latestIssue.issueBook || '-';
+      document.getElementById('issueLatestMember').textContent = latestIssue.issueMember || '-';
+      document.getElementById('issueLatestDate').textContent = latestIssue.issueDate || '-';
+      document.getElementById('issueLatestDue').textContent = latestIssue.dueDate || '-';
+    }
+
+    renderIssueActivity();
+    window.addEventListener('library:data-changed', () => {
+      renderMembers();
+      renderBook();
+      renderIssueActivity();
+    });
+    window.addEventListener('storage', () => {
+      renderMembers();
+      renderBook();
+      renderIssueActivity();
+    });
+
+    // Section: Default Issue and Due Dates
     const date = new Date();
     issueDate.value = date.toISOString().split('T')[0]
 
@@ -44,6 +102,7 @@
 
     // localStorage.removeItem('books')
 
+    // Action: Validate and Record a Book Issue
     issueBtn.addEventListener('click', function (event) {
       event.preventDefault();
       let issueDate = document.getElementById('issueDate')
@@ -84,6 +143,7 @@
           title: "Book Issue Successfully"
         })
         updateQuantity(selectedBook.bookId);
+        window.dispatchLibraryDataChanged?.();
 
 
       }

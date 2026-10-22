@@ -1,28 +1,64 @@
+/* Feature: Issue Book */
+/* Subsection: Issue Form and Workflow Panel */
 .left-issue {
     background: linear-gradient(
         145deg,
-        rgb(126, 88, 105),
-        #361d2d
+        var(--color-card-issued-start),
+        var(--color-card-issued-end)
     );
-    width: 50%;
-    border: 2px solid #c6a15a; 
+    width: auto;
+    min-width: 0;
+    flex: 1 1 320px;
+    border: 2px solid var(--color-accent);
     border-radius: 8px;
 }
+.issue-book-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.left-issue > .container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.right-issue {
+  min-width: 0;
+  flex: 1 1 280px;
+  margin-left: 0 !important;
+}
+
 #d-issue-book h1{
-    color: #e2c77e;
-    margin-bottom: 20px;
+    color: var(--color-accent-bright);
+  margin-bottom: var(--space-heading-gap);
+}
+.left-issue .text,
+.right-issue .right-text {
+  color: var(--color-text);
+}
+
+.right-issue .right-text .section-title,
+.right-issue .right-content,
+.right-issue .avail-list > li {
+  color: var(--color-text-bright);
+}
+
+.left-issue .input-group label {
+  color: var(--color-text);
+  font-weight: 600;
 }
 .input-group select,
-input {
+.input-group input {
   width: 100%;
   height: 45px;
   border: none;
   outline: none;
-  border: 2px solid rgb(232, 226, 226);
+  border: 2px solid var(--color-border-muted);
   padding: 5px 10px;
 }
 .input-group label span {
-  color: rgb(241, 92, 42);
+  color: var(--color-danger);
 }
 .btn-group {
   display: flex;
@@ -31,19 +67,132 @@ input {
   gap: 10px;
 }
 .btn-group button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   height: 45px;
-  border: none;
+  padding: 0 12px;
+  border: 1px solid var(--color-accent);
   outline: none;
   border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text-bright);
   font-weight: bold;
-  
-
 }
-.input-group input,select{
+
+.btn-group button#issueBtn {
+  background: var(--color-primary);
+  color: var(--color-text-bright);
+}
+
+.btn-group button .material-symbols-outlined {
+  font-size: 20px;
+}
+.input-group input,
+.input-group select {
   border-radius: 8px;
   margin: 10px 0px;
 }
 .avail-list > li{
   margin-top: 20px;
 
+}
+
+/* Subsection: Live Issue Data */
+.issue-live-data {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-accent-line-heavy);
+}
+
+.issue-live-data > .section-title {
+  margin-bottom: var(--space-3);
+  font-size: 18px;
+}
+
+.issue-live-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.issue-live-metric {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-3);
+  border: 1px solid var(--color-accent-line-medium);
+  border-radius: 6px;
+  background: var(--color-accent-wash);
+  color: var(--color-text-soft);
+  font-size: 13px;
+}
+
+.issue-live-metric strong {
+  color: var(--color-text-bright);
+  font-size: 24px;
+}
+
+.issue-latest {
+  margin-top: var(--space-4);
+}
+
+.issue-latest h4 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 var(--space-2);
+  color: var(--color-accent-bright);
+  font-size: 14px;
+}
+
+.issue-latest dl {
+  margin: 0;
+}
+
+.issue-latest dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--color-accent-line-soft);
+}
+
+.issue-latest dt {
+  color: var(--color-text-soft);
+}
+
+.issue-latest dd {
+  margin: 0;
+  color: var(--color-text-bright);
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.issue-live-empty {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-soft);
+  font-size: 13px;
+}
+
+.issue-live-empty[hidden],
+.issue-latest[hidden] {
+  display: none;
+}
+
+/* Responsive Layout: Issue Form and Workflow */
+@media (max-width: 700px) {
+  .issue-book-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .left-issue,
+  .right-issue {
+    width: 100%;
+    flex-basis: auto;
+  }
 }

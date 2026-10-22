@@ -1,0 +1,150 @@
+/* Shared Theme: design tokens */
+:root {
+  color-scheme: dark;
+  /* Core surfaces and text */
+  --color-page: #160d1d;
+  --color-footer: #100912;
+  --color-surface: #291323;
+  --color-surface-raised: #1c0c1b;
+  --color-surface-soft: #251b20;
+  --color-input: #fffdf8;
+  --color-input-ink: #342921;
+  --color-input-ink-soft: #5b4638;
+  --color-ink: #2f2422;
+  --color-primary: #8d2942;
+  --color-primary-hover: #a93650;
+  --color-primary-deep: #54152b;
+  --color-accent: #c6a15a;
+  --color-accent-bright: #e2c77e;
+  --color-accent-soft: #f5d98b;
+  --color-text: #f5e7c8;
+  --color-text-bright: #fff2d2;
+  --color-text-soft: #e8ddcb;
+  --color-text-muted: #cdbda5;
+  --color-text-subtle: #a99a87;
+  --color-text-placeholder: #94a3b8;
+  --color-text-footer: #988875;
+  --color-text-label: #e1d1b6;
+  --color-text-field: #fff4dd;
+  --color-text-dark: #1f2937;
+  --color-text-dark-muted: #4b5563;
+  --color-border-muted: #947b62;
+  --color-border-gold: #b89452;
+  --color-border-brown: #4e3a25;
+  --color-border-input: #73582f;
+  --color-border-light: #cbd5e1;
+  /* Status colors */
+  --color-danger: #c84b31;
+  --color-success: #80df9b;
+  --color-success-ink: #105f26;
+  --color-success-soft: #a9ddb0;
+  --color-warning: #ffad98;
+  /* Dashboard card palettes */
+  --color-card-books-start: #75263d;
+  --color-card-books-end: #391321;
+  --color-card-available-start: #49345d;
+  --color-card-available-end: #21152e;
+  --color-card-members-start: #31514c;
+  --color-card-members-end: #182d2a;
+  --color-card-issued-start: #7e5869;
+  --color-card-issued-end: #361d2d;
+  --color-card-highlight: #6c2762;
+  --color-card-highlight-end: #420d30;
+  --color-action: #7a71c8;
+  --color-action-light: #cfcbef;
+  --color-action-dark: #64617e;
+  --color-modal-border: #765832;
+  --color-light-border: #f1efef;
+  --color-light-line: #d7d7d7;
+  --color-accent-muted: #d4ad5c;
+  --color-accent-faint: #f7e8c9;
+  --color-neutral-shadow: #39291d;
+  --color-neutral-panel: #dbd9d9;
+  --color-neutral-line: #d4d1d1;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+  /* Translucent surfaces and overlays */
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-deep: rgba(0, 0, 0, 0.4);
+  --color-shadow-soft: rgba(0, 0, 0, 0.08);
+  --color-shadow-low: rgba(0, 0, 0, 0.2);
+  --color-shadow-medium: rgba(0, 0, 0, 0.25);
+  --color-shadow-strong: rgba(0, 0, 0, 0.45);
+  --color-hero-glow: rgba(153, 72, 103, 0.25);
+  --color-auth-shade-soft: rgba(20, 8, 25, 0.3);
+  --color-auth-shade: rgba(20, 8, 25, 0.45);
+  --color-auth-shade-light: rgba(20, 8, 25, 0.35);
+  --color-auth-shade-medium: rgba(20, 8, 25, 0.4);
+  --color-auth-panel: rgba(28, 12, 27, 0.88);
+  --color-field: rgba(255, 255, 255, 0.08);
+  --color-field-focus: rgba(255, 255, 255, 0.1);
+  --color-success-wash: rgba(103, 164, 119, 0.18);
+  --color-danger-wash: rgba(219, 100, 76, 0.18);
+  --color-accent-wash: rgba(226, 199, 126, 0.12);
+  --color-accent-wash-soft: rgba(226, 199, 126, 0.1);
+  --color-accent-line: rgba(226, 199, 126, 0.16);
+  --color-accent-line-soft: rgba(226, 199, 126, 0.2);
+  --color-accent-line-medium: rgba(226, 199, 126, 0.28);
+  --color-accent-line-strong: rgba(226, 199, 126, 0.3);
+  --color-accent-line-heavy: rgba(226, 199, 126, 0.35);
+  --color-accent-line-bold: rgba(226, 199, 126, 0.5);
+  --color-panel-wash: rgba(37, 27, 32, 0.58);
+  --color-panel-wash-medium: rgba(37, 27, 32, 0.62);
+  --color-panel-wash-strong: rgba(37, 27, 32, 0.72);
+  /* Shared gradients */
+  --gradient-app: radial-gradient(circle at 80% 40%, var(--color-hero-glow), transparent 30%), var(--color-page);
+  --gradient-sidebar: linear-gradient(145deg, var(--color-card-highlight), var(--color-card-highlight-end));
+  --gradient-active: linear-gradient(145deg, var(--color-primary), var(--color-primary-deep));
+  --gradient-book-card: linear-gradient(145deg, var(--color-card-books-start), var(--color-card-books-end));
+  --gradient-available-card: linear-gradient(145deg, var(--color-card-available-start), var(--color-card-available-end));
+  --gradient-member-card: linear-gradient(145deg, var(--color-card-members-start), var(--color-card-members-end));
+  --gradient-issued-card: linear-gradient(145deg, var(--color-card-issued-start), var(--color-card-issued-end));
+  --gradient-rose-card: linear-gradient(145deg, var(--color-card-issued-start), var(--color-card-issued-end));
+  --gradient-action: linear-gradient(145deg, var(--color-action-light), var(--color-action-dark));
+  --gradient-auth: linear-gradient(var(--color-auth-shade-light), var(--color-auth-shade));
+  /* Shared spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-section-padding: 28px 24px 40px;
+  --space-section-padding-mobile: 20px clamp(12px, 4vw, 24px) 30px;
+  --space-heading-gap: 16px;
+}
+
+/* Component Theme: SweetAlert dialogs */
+.swal2-container {
+  z-index: 20000 !important;
+}
+
+.swal2-popup {
+  border: 1px solid var(--color-accent) !important;
+  background: var(--color-surface-raised) !important;
+  color: var(--color-text) !important;
+}
+
+.swal2-title,
+.swal2-html-container {
+  color: var(--color-text) !important;
+}
+
+.swal2-actions button {
+  min-width: 92px;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+}
+
+.swal2-confirm {
+  background: var(--color-primary) !important;
+  color: var(--color-text-bright) !important;
+}
+
+.swal2-cancel {
+  background: var(--color-surface-soft) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-accent) !important;
+}

@@ -1,6 +1,4 @@
-/* =========================================
-   REGISTER PAGE
-========================================= */
+/* Page: Member Registration Styles */
 
 * {
     margin: 0;
@@ -13,9 +11,7 @@
 }
 
 
-/* =========================================
-   BACKGROUND
-========================================= */
+/* Section: Registration Background */
 
 .register-page .auth-background {
     min-height: 100vh;
@@ -34,23 +30,19 @@
 }
 
 
-/* =========================================
-   REGISTER IMAGES
-========================================= */
+/* Subsection: Registration Background Image */
 
 .register-page .auth-background {
     background-image:
         linear-gradient(
-            rgba(20, 8, 25, 0.30),
-            rgba(20, 8, 25, 0.40)
+            var(--color-auth-shade-soft),
+            var(--color-auth-shade-medium)
         ),
         url("/assets/images/enchanted-register.png");
 }
 
 
-/* =========================================
-   MENU
-========================================= */
+/* Section: Auth Navigation */
 
 .auth-menu {
     position: absolute;
@@ -65,17 +57,17 @@
 
     border-radius: 50%;
     border: none;
-    
-    background: #8d2942;
-    color: #f5d98b;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+
+    background: var(--color-primary);
+    color: var(--color-accent-soft);
+    box-shadow: 0 5px 20px var(--color-shadow);
 
     font-size: 25px;
 
     cursor: pointer;
 }
 .auth-menu .menu-button:hover {
-    background: #a93650;
+    background: var(--color-primary-hover);
 }
 
 .auth-menu .menu-box {
@@ -91,11 +83,11 @@
 
     border-radius: 8px;
 
-    background: #291323;
-    border: 1px solid #b89452;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-gold);
+    box-shadow: 0 15px 35px var(--color-shadow-deep);
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 25px var(--color-shadow-medium);
 }
 
 
@@ -110,21 +102,19 @@
 
     text-decoration: none;
 
-    color: white;
+    color: var(--color-white);
 
     font-size: 14px;
 
     border-radius: 5px;
 }
 .auth-menu .menu-box a:hover {
-    background: #8d2942;
-    color: #f5d98b;
+    background: var(--color-primary);
+    color: var(--color-accent-soft);
 }
 
 
-/* =========================================
-   REGISTER FORM
-========================================= */
+/* Section: Registration Form */
 
 .auth-form {
     width: 100%;
@@ -136,19 +126,19 @@
 
     position: relative;
     z-index: 5;
-    
-    background: rgba(28, 12, 27, 0.88);
-    border: 1px solid #b89452;
 
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    background: var(--color-auth-panel);
+    border: 1px solid var(--color-border-gold);
+
+    box-shadow: 0 20px 50px var(--color-shadow-strong);
 }
 
 .auth-form h1 {
     margin: 0 0 12px;
     font-size: 36px;
     line-height: 1.2;
-    
-    color: #f5e7c8;
+
+    color: var(--color-text);
 }
 
 .small-title {
@@ -157,8 +147,8 @@
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 3px;
-    
-    color: #d4ad5c;
+
+    color: var(--color-accent-muted);
 }
 
 .login-text {
@@ -166,8 +156,8 @@
 
     font-size: 14px;
     line-height: 1.7;
-    
-    color: #cdbda5;
+
+    color: var(--color-text-muted);
 }
 
 .input-group {
@@ -181,8 +171,8 @@
 
     font-size: 14px;
     font-weight: 600;
-    
-    color: #e1d1b6;
+
+    color: var(--color-text-label);
 }
 
 .input-group input {
@@ -193,18 +183,18 @@
     border-radius: 6px;
 
     font-size: 14px;
-    
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid #73582f;
-    color: #fff4dd;
+
+    background: var(--color-field);
+    border: 1px solid var(--color-border-input);
+    color: var(--color-text-field);
 }
 .input-group input::placeholder {
-    color: #a99a87;
+    color: var(--color-text-subtle);
 }
 .input-group input:focus {
     outline: none;
-    border-color: #d4ad5c;
-    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-accent-muted);
+    background: var(--color-field-focus);
 }
 
 .login-button {
@@ -219,13 +209,13 @@
     font-weight: 700;
 
     cursor: pointer;
-    
-    background: #8d2942;
-    color: #fff0ce;
-    border: 1px solid #b89452;
+
+    background: var(--color-primary);
+    color: var(--color-text-bright);
+    border: 1px solid var(--color-border-gold);
 }
 .login-button:hover {
-    background: #a93650;
+    background: var(--color-primary-hover);
 }
 
 .register-link {
@@ -236,15 +226,15 @@
 .register-link p {
     margin: 0 0 5px;
     font-size: 13px;
-    
-    color: #a99a87;
+
+    color: var(--color-text-subtle);
 }
 
 .register-link a {
     font-size: 13px;
     text-decoration: none;
-    
-    color: #d4ad5c;
+
+    color: var(--color-accent-muted);
 }
 
 .register-link a:hover {
@@ -252,9 +242,7 @@
 }
 
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* Section: Responsive Layout */
 
 @media (max-width: 576px) {
 

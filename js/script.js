@@ -1,6 +1,6 @@
-// =========================================
-// 3 DOT MENU
-// =========================================
+// Page Support: Shared Navigation and Session Actions
+
+// Section: Three-Dot Navigation
 
 function toggleMenu() {
 
@@ -17,9 +17,7 @@ function toggleMenu() {
 
 
 
-// =========================================
-// SHOW USER INFORMATION
-// =========================================
+// Section: User Information
 
 function showUserInformation() {
 
@@ -56,14 +54,22 @@ function showUserInformation() {
 }
 
 showUserInformation();
-// =========================================
-// LOGOUT
-// =========================================
+// Section: Logout
 
-function logoutUser() {
+async function logoutUser() {
+    const result = await Swal.fire({
+        icon: "question",
+        title: "Log out?",
+        text: "Are you sure you want to log out?",
+        showCancelButton: true,
+        confirmButtonText: "Log out",
+        cancelButtonText: "Cancel",
+        reverseButtons: true
+    });
+
+    if (!result.isConfirmed) return;
 
     localStorage.removeItem("libraryLoggedIn");
-
     window.location.href = "/index.html";
 }
 

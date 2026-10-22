@@ -1,14 +1,186 @@
+/* Feature: Member Management */
+/* Subsection: Search and Edit Dialog */
 #d-members h1{
-    color: #f1dfbd;
+    color: var(--color-text);
 }
 #d-members th{
-    color: #f1dfbd;
+    color: var(--color-text);
 }
 #d-members p{
-    color: #c6a15a;
+    color: var(--color-accent);
 }
-#d-members table{
-    color: #c6a15a;
+.member-search {
+    display: flex;
+    width: min(100%, 520px);
+    align-items: center;
+    gap: 9px;
+    margin: 12px 0 16px;
+    padding: 0 12px;
+    border: 1px solid var(--color-border-muted);
+    border-radius: 6px;
+    background: var(--color-input);
+    color: var(--color-input-ink);
+}
+
+.member-search .material-symbols-outlined {
+    color: var(--color-text-dark-muted);
+    font-size: 21px;
+}
+
+.member-search input {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: var(--color-transparent);
+    color: var(--color-input-ink);
+}
+
+.member-search input::placeholder {
+    color: var(--color-text-dark-muted);
+}
+
+.member-search:focus-within {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.member-edit-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.member-edit-popup[hidden] {
+    display: none !important;
+}
+
+.member-edit-backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--color-overlay);
+}
+
+.member-edit-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(520px, 100%);
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+    background: linear-gradient(145deg, var(--color-card-members-start), var(--color-card-members-end));
+    color: var(--color-text);
+    box-shadow: 0 16px 40px var(--color-shadow-deep);
+}
+
+.member-edit-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-accent-line-heavy);
+}
+
+.member-edit-heading h2 {
+    margin: 0;
+    color: var(--color-text) !important;
+    font-size: 22px;
+}
+
+.member-edit-close {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    background: var(--color-transparent);
+    color: var(--color-text-bright);
+    cursor: pointer;
+}
+
+.member-edit-dialog form {
+    display: grid;
+    gap: 9px;
+}
+
+.member-edit-dialog label {
+    color: var(--color-text-bright);
+    font-weight: 600;
+}
+
+.member-edit-dialog input:not([type="hidden"]) {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    margin-bottom: 6px;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border-muted);
+    border-radius: 5px;
+    background: var(--color-input);
+    color: var(--color-input-ink);
+}
+
+.member-edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.member-edit-actions button {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.member-edit-cancel {
+    background: var(--color-transparent);
+    color: var(--color-text-bright);
+}
+
+.member-edit-save {
+    background: var(--color-primary);
+    color: var(--color-text-bright);
+}
+
+/* Feature: Member Results Table and Row Actions */
+#d-members .member-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-surface);
+}
+
+#d-members table {
+    width: 100%;
+    min-width: 760px;
+    color: var(--color-accent);
+}
+
+#d-members table thead,
+#d-members table tbody {
+    white-space: nowrap;
 }
 
 table{
@@ -18,21 +190,21 @@ table{
     text-align: center;
 }
 #d-members thead{
-    color: #f5e7c8;
+    color: var(--color-text);
     background: linear-gradient(
         145deg,
-        #31514c,
-        #182d2a
+        var(--color-card-members-start),
+        var(--color-card-members-end)
     );
 
 }
 
 .editBtn{
-    color: white;
-    background-color: #7a71c8;
+    color: var(--color-ink);
+    background-color: var(--color-accent-bright);
     margin: 5px;
     margin-right: 10px;
-    
+
   padding: 5px 10px;
     /* display: flex; */
     /* justify-content: center; */
@@ -45,9 +217,9 @@ table{
     transform: scale(1.1);
 }
 .deleteBtn{
-    color: white;
-    background-color: #c84b31;
-    
+    color: var(--color-white);
+    background-color: var(--color-danger);
+
   padding: 5px 10px;
     /* display: flex; */
     /* justify-content: center; */
@@ -61,15 +233,48 @@ table{
 }
 #d-members h1{
     display: flex;
-    align-items: center;  
-    margin-left: 20px;
+    align-items: center;
+    gap: 10px;
+    margin-left: 0;
+}
+
+#d-members h1 .material-symbols-outlined {
+    color: var(--color-accent-bright);
+    font-size: 32px;
+}
+
+#d-members .editBtn,
+#d-members .deleteBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 36px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#d-members .editBtn .material-symbols-outlined,
+#d-members .deleteBtn .material-symbols-outlined {
+    font-size: 18px;
 }
 
 #d-members tbody{
-    color: #c6a15a;
+    color: var(--color-accent);
     background: linear-gradient(
         145deg,
-        #31514c,
-        #182d2a
+        var(--color-card-members-start),
+        var(--color-card-members-end)
     );
+}
+
+/* Responsive Layout: Member Edit Dialog */
+@media (max-width: 420px) {
+    .member-edit-dialog {
+        padding: 16px;
+    }
+
+    .member-edit-actions button {
+        flex: 1;
+    }
 }

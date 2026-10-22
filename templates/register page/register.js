@@ -1,7 +1,7 @@
 
-// =========================================
-// 3 DOT MENU
-// =========================================
+// Page Support: Member Registration
+
+// Section: Auth Navigation
 
 function toggleMenu() {
 
@@ -16,9 +16,7 @@ function toggleMenu() {
     }
 }
 
-// =========================================
-// REGISTER
-// =========================================
+// Section: Registration Submission
 
 const registerForm =
     document.getElementById("registerForm");
@@ -65,9 +63,29 @@ if (registerForm) {
                 .value;
 
 
+            // Validate required fields before checking credentials.
+            if (!registerForm.checkValidity()) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Check the registration details",
+                    text: "Enter a valid value in each required field.",
+                    showCancelButton: true,
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancel"
+                });
+                return;
+            }
+
+
             if (password !== confirmPassword) {
 
-                alert("Passwords do not match.");
+               Swal.fire({
+                    icon: "error",
+                    title: "Password and Confirm Password do not match",
+                    showCancelButton: true,
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancel"
+                })
 
                 return;
             }
@@ -104,12 +122,30 @@ if (registerForm) {
             //     "login.html";
 
             //My Code
-            let retrivedData=JSON.parse(localStorage.getItem("libraryUser")) || [];
-            retrivedData.push(user)
+            // Confirm account creation before saving the member record.
+            Swal.fire({
+                icon: "question",
+                title: "Create this account?",
+                text: "Check your details before continuing.",
+                showCancelButton: true,
+                confirmButtonText: "Create account",
+                cancelButtonText: "Cancel",
+                reverseButtons: true
+            }).then((result) => {
+                if (!result.isConfirmed) return;
 
-            localStorage.setItem("libraryUser",JSON.stringify(retrivedData))
-            alert("Account Created Successfully")
-            window.location.href="../login page/login.html"
+                const members = JSON.parse(localStorage.getItem("libraryUser") || "[]");
+                members.push(user);
+                localStorage.setItem("libraryUser", JSON.stringify(members));
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Account created successfully",
+                    confirmButtonText: "OK"
+                }).then(() => {
+                    window.location.href = "../login page/login.html";
+                });
+            });
 
 
         }

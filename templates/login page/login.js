@@ -1,7 +1,7 @@
 
-// =========================================
-// 3 DOT MENU
-// =========================================
+// Page Support: Member Login
+
+// Section: Auth Navigation
 
 function toggleMenu() {
 
@@ -17,9 +17,7 @@ function toggleMenu() {
 }
 
 
-// =========================================
-// LOGIN
-// =========================================
+// Section: Login Submission
 
 const loginForm =
     document.getElementById("loginForm");
@@ -78,6 +76,7 @@ if (loginForm) {
             //     );
 
             // }
+            // Authenticate against the saved library member list.
             let valid =false;
             let data=JSON.parse(localStorage.getItem('libraryUser'));
             for(let d of data){
@@ -92,11 +91,21 @@ if (loginForm) {
 
             if(valid){
                 localStorage.setItem("libraryLoggedIn","true")
-                alert("Login Successfull")
+                Swal.fire({
+                    icon: "success",
+                    title: "Login successful. Welcome " + currentUser.name + "!",
+                    timer: 2000,
+                    showConfirmButton: false
+                })
                 window.location.href="../dashboard/dashboard.html"
 
             }else{
-                alert("Invalid")
+                Swal.fire({
+                    icon: "error",
+                    title: "Invalid email or password.",
+                    timer: 2000,
+                    showConfirmButton: false
+                })
             }
 
 }

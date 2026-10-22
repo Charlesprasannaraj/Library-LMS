@@ -1,11 +1,16 @@
-//------------------------------
+// Feature: Book Management
 
-
+// Section: Inventory Rendering and Search
 function displayBooks() {
   let books = JSON.parse(localStorage.getItem("books")) || []
   let table = document.querySelector(".book-table table tbody");
+  const search = document.getElementById("bookSearch")?.value.trim().toLowerCase() || "";
+  const category = document.getElementById("bookCategoryFilter")?.value || "";
   table.innerHTML = "";
-  books.forEach((book) => {
+  books.filter((book) => {
+    const searchable = `${book.bookTitle} ${book.bookAuthor} ${book.bookCategory} ${book.bookId}`.toLowerCase();
+    return searchable.includes(search) && (!category || book.bookCategory === category);
+  }).forEach((book) => {
     table.innerHTML += `  <tr>
         <td>${book.bookId}</td>
         <td>${book.bookTitle}</td>
@@ -13,34 +18,77 @@ function displayBooks() {
         <td>${book.bookCategory}</td>
         <td>${book.bookQuantity}</td>
         <td>
-          <button class="editBtn" onClick=editBook('${book.bookId}')><span class=" edit-icon material-symbols-outlined">edit</span>Edit</button>
-          <button class="deleteBtn" onClick=deleteBook('${book.bookId}')><span class="delete-icon material-symbols-outlined">delete</span>Delete</button>
+          <button type="button" class="editBtn" aria-label="Edit ${book.bookTitle}" onClick=editBook('${book.bookId}')><span class="material-symbols-outlined" aria-hidden="true">edit</span>Edit</button>
+          <button type="button" class="deleteBtn" aria-label="Delete ${book.bookTitle}" onClick=deleteBook('${book.bookId}')><span class="material-symbols-outlined" aria-hidden="true">delete</span>Delete</button>
         </td>
       </tr>`;
   });
 }
 displayBooks();
+window.addEventListener("library:data-changed", displayBooks);
+window.addEventListener("storage", displayBooks);
+document.getElementById("bookSearch")?.addEventListener("input", displayBooks);
+document.getElementById("bookCategoryFilter")?.addEventListener("change", displayBooks);
 
-function deleteBook(id) {
+// Action: Confirm and Delete Book
+async function deleteBook(id) {
+  const result = await Swal.fire({
+    icon: "warning",
+    title: "Delete this book?",
+    text: "This book will be removed from the inventory.",
+    showCancelButton: true,
+    confirmButtonText: "Delete",
+    cancelButtonText: "Cancel",
+    reverseButtons: true
+  });
+  if (!result.isConfirmed) return;
+
   let books = JSON.parse(localStorage.getItem("books")) || [];
   books = books.filter((book) => book.bookId !== id);
   localStorage.setItem("books", JSON.stringify(books));
+  window.dispatchLibraryDataChanged?.();
   displayBooks();
 }
+
+// Dialog: Add Book
+
+// function openBookPopup() {
+//   let b = JSON.parse(localStorage.getItem("books")) || []
+//   let overlay = document.querySelector(".overlay");
+//   overlay.style.display = "flex";
+//   let id = document.getElementById("bookId");
+//   console.log(b);
+ 
+ 
+// }
 
 let popup = document.getElementsByClassName("popup-container")[0];
 let openPopup = document
   .getElementsByClassName("addBookBtn")[0]
   .addEventListener("click", function () {
+    popup.hidden = false;
     popup.style.display = "block";
+    let bookIdInput = document.getElementById("bookId");
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+    let id;
+    if (books.length === 0) {
+      id = "BK-101";
+    } else {
+      id =
+        "BK-" +
+        (Math.max(...books.map((book) => parseInt(book.bookId.replace("BK-", "")))) + 1);
+    }
+    bookIdInput.value = id;
   });
 let closePopup = document
   .getElementsByClassName("cancelBtn")[0]
   .addEventListener("click", function (event) {
     event.preventDefault();
     popup.style.display = "none";
+    popup.hidden = true;
   });
 
+// Action: Save New Book
 let form = document.getElementById("myForm");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -60,11 +108,21 @@ form.addEventListener("submit", function (event) {
     bookPublisher === "" ||
     bookYear === ""
   ) {
-    alert("Required all Fields");
+    Swal.fire({
+      icon: "error",
+      title: "Please fill in all fields."
+    });
     return;
   }
 
   let books = JSON.parse(localStorage.getItem("books")) || [];
+  // let id;
+  // if(books.length ===0){
+  //   id = "BK-101";
+  // } else {
+  //   id = Math.max(...books.map(book => parseInt(book.bookId.replace("BK-", "")))) + 1;
+  // }
+
   const newBook = {
     bookId: bookId,
     bookTitle: bookTitle,
@@ -76,21 +134,30 @@ form.addEventListener("submit", function (event) {
   };
   books.push(newBook);
   localStorage.setItem("books", JSON.stringify(books));
-  alert("book Added Successfully");
+  window.dispatchLibraryDataChanged?.();
+  Swal.fire({
+    icon: "success",
+    title: "Book added successfully.",
+    timer: 2000,
+    showConfirmButton: false
+  });
   popup.style.display="none"
+  popup.hidden = true;
   displayBooks();
   form.reset();
 });
 
-//edit Book;
+// Dialog: Edit Book
 let editPopup = document.getElementsByClassName("popup-container")[1];
 let editCancelBtn = document
   .getElementsByClassName("editCancelBtn")[0]
   .addEventListener("click", function (event) {
     event.preventDefault();
     editPopup.style.display = "none";
+    editPopup.hidden = true;
   });
 function editBook(id) {
+  editPopup.hidden = false;
   editPopup.style.display = "block";
   let books = JSON.parse(localStorage.getItem("books")) || [];
   let book = books.find((book) => book.bookId === id);
@@ -102,6 +169,7 @@ function editBook(id) {
   document.getElementById("editBookPublisher").value = book.bookPublisher;
   document.getElementById("editBookYear").value = book.bookYear;
 }
+// Action: Save Book Changes
 let editForm = document.getElementById("editForm");
 editForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -118,9 +186,17 @@ editForm.addEventListener("submit", function (event) {
   book.bookYear=document.getElementById("editBookYear").value
 
   localStorage.setItem("books",JSON.stringify(books));
-  alert("Edit Successfully")
+  window.dispatchLibraryDataChanged?.();
+  Swal.fire({
+    icon: "success",
+    title: "Book edited successfully.",
+    timer: 2000,
+    showConfirmButton: false
+  });
   displayBooks();
   editPopup.style.display="none"
+  editPopup.hidden = true;
   
 
 });
+localStorage.removeItem("dlms_books")
