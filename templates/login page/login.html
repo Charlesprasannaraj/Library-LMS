@@ -78,7 +78,7 @@
                 </p>
 
 
-                <form id="loginForm">
+                <form id="loginForm" novalidate>
 
 
                     <div class="input-group">
@@ -91,8 +91,11 @@
                             type="email"
                             id="email"
                             placeholder="Enter your email"
+                            autocomplete="email"
+                            aria-describedby="emailError"
                             required
                         >
+                        <small class="field-error" id="emailError" aria-live="polite"></small>
 
                     </div>
 
@@ -103,12 +106,18 @@
                             Password
                         </label>
 
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Enter your password"
-                            required
-                        >
+                        <div class="password-field">
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                aria-describedby="passwordError"
+                                required
+                            >
+                            <button class="password-toggle" type="button" data-password-toggle="password" aria-label="Show password" aria-pressed="false">Show</button>
+                        </div>
+                        <small class="field-error" id="passwordError" aria-live="polite"></small>
 
                     </div>
 
@@ -143,8 +152,8 @@
     </main>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./login.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>

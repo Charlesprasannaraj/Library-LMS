@@ -92,8 +92,13 @@
                             type="text"
                             id="name"
                             placeholder="Enter your full name"
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="80"
+                            aria-describedby="nameError"
                             required
                         >
+                        <small class="field-error" id="nameError" aria-live="polite"></small>
 
                     </div>
 
@@ -107,11 +112,16 @@
                         </label>
 
                         <input
-                            type="number"
+                            type="tel"
                             id="mobileNumber"
-                            placeholder="Enter your Number"
+                            placeholder="Enter your mobile number"
+                            autocomplete="tel"
+                            inputmode="tel"
+                            maxlength="20"
+                            aria-describedby="mobileNumberError"
                             required
                         >
+                        <small class="field-error" id="mobileNumberError" aria-live="polite"></small>
 
                     </div>
 
@@ -120,16 +130,21 @@
 
                     <div class="input-group">
 
-                        <label for="Address">
+                        <label for="address">
                             Address
                         </label>
 
                         <input
-                            type="Address"
+                            type="text"
                             id="address"
-                            placeholder="Enter your Address"
+                            placeholder="Enter your address"
+                            autocomplete="street-address"
+                            minlength="5"
+                            maxlength="250"
+                            aria-describedby="addressError"
                             required
                         >
+                        <small class="field-error" id="addressError" aria-live="polite"></small>
 
                     </div>
 
@@ -144,8 +159,12 @@
                             type="email"
                             id="registerEmail"
                             placeholder="Enter your email"
+                            autocomplete="email"
+                            maxlength="254"
+                            aria-describedby="registerEmailError"
                             required
                         >
+                        <small class="field-error" id="registerEmailError" aria-live="polite"></small>
 
                     </div>
 
@@ -156,12 +175,23 @@
                             Password
                         </label>
 
-                        <input
-                            type="password"
-                            id="registerPassword"
-                            placeholder="Create a password"
-                            required
-                        >
+                        <div class="password-field">
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                aria-describedby="passwordHint passwordError"
+                                required
+                            >
+                            <button class="password-toggle" type="button" data-password-toggle="registerPassword" aria-label="Show password" aria-pressed="false">Show</button>
+                        </div>
+                        <small class="field-hint" id="passwordHint">Use at least 8 characters with uppercase, lowercase, and a number.</small>
+                        <div class="password-strength" role="progressbar" aria-label="Password strength" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" aria-live="polite">
+                            <span class="strength-track"><span class="strength-fill" id="strengthFill"></span></span>
+                            <span class="strength-label" id="strengthLabel">Password strength</span>
+                        </div>
+                        <small class="field-error" id="passwordError" aria-live="polite"></small>
 
                     </div>
 
@@ -172,12 +202,18 @@
                             Confirm Password
                         </label>
 
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            placeholder="Confirm your password"
-                            required
-                        >
+                        <div class="password-field">
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                aria-describedby="confirmPasswordError"
+                                required
+                            >
+                            <button class="password-toggle" type="button" data-password-toggle="confirmPassword" aria-label="Show password" aria-pressed="false">Show</button>
+                        </div>
+                        <small class="field-error" id="confirmPasswordError" aria-live="polite"></small>
 
                     </div>
 
